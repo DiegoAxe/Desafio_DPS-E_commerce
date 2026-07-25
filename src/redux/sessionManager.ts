@@ -1,10 +1,10 @@
+import Swal from "sweetalert2";
 import {
   createSlice,
   PayloadAction,
 } from "@reduxjs/toolkit";
 
 import { Usuario } from "../types/Usuario";
-
 
 /*Creamos un usuario por default */
 const initialState: Usuario[] = [
@@ -31,10 +31,10 @@ const sessionManagerSlice = createSlice({
       );
 
       if (existingUser) {
-        alert("Usuario encontrado");
+        Swal.fire("Éxito", "Inicio de sesión exitoso", "success");
         return;
       } else {
-        alert("Correo o contraseña incorrectos");
+        Swal.fire("Error", "Correo o contraseña incorrectos", "error");
         return;
       }
     },
@@ -49,9 +49,9 @@ const sessionManagerSlice = createSlice({
       
       if (!existingUser) {
         state.push(action.payload);
-        alert("Usuario registrado exitosamente");
+        Swal.fire("Éxito", "Registro exitoso", "success");
       } else {
-        alert("El correo ya está registrado");
+        Swal.fire("Error", "El correo ya está registrado", "error");
       }
     }
 

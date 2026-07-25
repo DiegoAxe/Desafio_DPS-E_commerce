@@ -1,5 +1,6 @@
 "use client";
 
+import Swal from "sweetalert2";
 import { useState } from "react";
 import { doLogin, doRegister } from "../redux/sessionManager";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -19,8 +20,9 @@ export default function SessionGrid() {
     const handleRegister = () => {
     if (!email_register.includes("@") || name_register === "" || 
         email_register === "" || password_register === "" ) {
-        alert("Por favor, complete todos los campos o correo inválido");
-        return;
+
+            Swal.fire("Error", "Por favor, complete todos los campos o el correo es inválido", "error");
+            return;
       }else{
         dispatch(doRegister({ name: name_register, email: email_register, password: password_register }));
       }
@@ -28,7 +30,7 @@ export default function SessionGrid() {
 
     const handleLogin = () => {
     if (!email_login.includes("@") || password_login === "" || email_login === "" ) {
-        alert("Por favor, complete todos los campos o correo inválido");
+        Swal.fire("Error", "Por favor, complete todos los campos o el correo es inválido", "error");
         return;
       }else{
         dispatch(doLogin({ email: email_login, password: password_login }));
