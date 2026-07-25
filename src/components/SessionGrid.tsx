@@ -23,7 +23,7 @@ export default function sessionGrid() {
     return (
         <div className="session-grid">
 
-            <div  className="session-card">
+            <div  className="session-card" id="login-card">
                 <div className="session-info">
                     <h1 className="session-title">INICIO DE SESION</h1>
                     
@@ -39,11 +39,11 @@ export default function sessionGrid() {
                 </div>
             </div>
                 
-            <div  className="session-card">
+            <div  className="session-card" id="register-card">
                 <div className="session-info">
                     <h1 className="session-title">REGISTRO</h1>
 
-                    <p>Nombre:</p>
+                    <p>Nombre de Usuario:</p>
                     <input className="name-register" type="text" value={name} 
                     onChange={(e) => setName(e.target.value)}/>
 
