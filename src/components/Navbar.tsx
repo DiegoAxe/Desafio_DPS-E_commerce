@@ -23,6 +23,7 @@ export default function Navbar() {
     <nav className="navbar">
       <div className="nav-links">
         <Link href="/">Inicio</Link>
+        <Link href="/openStore">Login</Link>
       </div>
 
       <div className="cart-container">

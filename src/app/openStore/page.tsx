@@ -1,11 +1,11 @@
-import SessionGrid from "@/components/SessionGrid";
+import ProductGrid from "@/components/ProductGrid";
 
 export default function Home() {
   return (
     <main className="home-container">
       <br />
       <section>
-        <SessionGrid />
+        <ProductGrid />
       </section>
     </main>
   );

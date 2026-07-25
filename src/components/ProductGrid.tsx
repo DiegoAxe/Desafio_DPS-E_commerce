@@ -1,5 +1,3 @@
-/* REVISAR ESTO */
-
 "use client";
 
 /* Para que funcione next/Image */

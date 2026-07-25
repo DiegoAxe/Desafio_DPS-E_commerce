@@ -1,5 +1,3 @@
-/* REVISAR ESTO */
-
 import { Product } from "../types/Product";
 
 export const listProducts: Product[] = [
