@@ -52,14 +52,42 @@ const cartSlice = createSlice({
       );
     },
 
+    plusOneCart: (
+      state,
+      action: PayloadAction<number>
+    ) => {
+      return state.map((item) => {
+        if (item.id === action.payload) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      });
+    },
+
+    minusOneCart: (
+      state,
+      action: PayloadAction<number>
+    ) => {
+      return state.map((item) => {
+        if (item.id === action.payload && item.quantity > 1) {
+          return { ...item, quantity: item.quantity - 1 };
+        }
+        return item;
+      });
+    },
+
     clearCart: () => [],
   },
 });
+
 
 export const {
   addToCart,
   removeFromCart,
   clearCart,
+  plusOneCart,
+  minusOneCart,
+  setSelectedCategory
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -5,7 +5,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-import { clearCart } from "../redux/cartSlice";
+import { clearCart, removeFromCart, plusOneCart, minusOneCart } from "../redux/cartSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 import "../styles/navbar.css";
@@ -38,12 +38,20 @@ export default function Navbar() {
               <>
                 {cart.map((item) => (
                   <div key={item.id} className="cart-item">
+
                     <img src={item.image} alt={item.title} className="cart-image" />
                     <div className="cart-info">
                       <p>{item.title}</p>
-                      <p>Cantidad: {item.quantity}</p>
-                      <strong>${item.price * item.quantity}</strong>
+                      <p>Cantidad: <b> {item.quantity}</b>
+                      <strong>${item.price * item.quantity}</strong> </p>
                     </div>
+                    {/* Acciones del carrito, para modificar la cantidad y eliminar el producto  */}
+                    <div className="cart-actions">
+                      <button className="plus-button" onClick={() => dispatch(plusOneCart(item.id))}> +1 </button>
+                      <button className="minus-button" onClick={() => dispatch(minusOneCart(item.id))}> -1 </button>
+                      <button className="remove-button" onClick={() => dispatch(removeFromCart(item.id))}> Eliminar </button>
+                    </div>
+
                   </div>
                 ))}
                 <div className="cart-total"><strong>Total: ${total}</strong></div>
