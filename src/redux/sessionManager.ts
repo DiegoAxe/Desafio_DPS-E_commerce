@@ -5,10 +5,18 @@ import {
 
 import { Usuario } from "../types/Usuario";
 
-const initialState: Usuario[] = [];
+
+/*Creamos un usuario por default */
+const initialState: Usuario[] = [
+    {
+      name: "diego",
+      email: "diegoarielmar@gmail.com",
+      password: "123456"
+    }
+];
 
 const sessionManagerSlice = createSlice({
-  name: "sessionManager",
+  name: "session",
 
   initialState,
 
@@ -16,14 +24,14 @@ const sessionManagerSlice = createSlice({
 
     doLogin: (
       state,
-      action: PayloadAction<Usuario>
+      action: PayloadAction<{ email: string; password: string }>
     ) => {
       const existingUser = state.find(
         item => item.email === action.payload.email && item.password === action.payload.password
       );
-      
+
       if (existingUser) {
-        alert("Si le acertaste XD");
+        alert("Usuario encontrado");
         return;
       } else {
         alert("Correo o contraseña incorrectos");
@@ -33,12 +41,12 @@ const sessionManagerSlice = createSlice({
 
     doRegister: (
       state,
-      action: PayloadAction<Usuario>
+      action: PayloadAction<{ name: string; email: string; password: string }>
     ) => {
       const existingUser = state.find(
         item => item.email === action.payload.email
       );
-
+      
       if (!existingUser) {
         state.push(action.payload);
         alert("Usuario registrado exitosamente");
@@ -52,7 +60,8 @@ const sessionManagerSlice = createSlice({
 
 
 export const {
-  doLogin
+  doLogin,
+  doRegister
 } = sessionManagerSlice.actions;
 
 export default sessionManagerSlice.reducer;
