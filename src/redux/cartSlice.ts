@@ -9,12 +9,23 @@ import { Product } from "../types/Product";
 
 const initialState: Product[] = [];
 
+let selectedCategory = "Todos"; // Valor predeterminado para mostrar todos los productos
+
+
 const cartSlice = createSlice({
   name: "cart",
 
   initialState,
 
   reducers: {
+    /* */
+    setSelectedCategory: (state, action: PayloadAction<string>) => {
+      selectedCategory = action.payload;
+      state = state.filter(
+        product => action.payload === "Todos" || product.category === action.payload
+      );
+    },
+
     addToCart: (
       state,
       action: PayloadAction<Product>
