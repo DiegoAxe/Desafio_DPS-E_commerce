@@ -18,7 +18,7 @@ const cartSlice = createSlice({
   initialState,
 
   reducers: {
-    /* */
+    /* Para el filtro de categorias */
     setSelectedCategory: (state, action: PayloadAction<string>) => {
       selectedCategory = action.payload;
       state = state.filter(

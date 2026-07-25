@@ -1,0 +1,22 @@
+.page-container { max-width: 1400px; margin: auto; }
+.page-title { text-align: center; margin: 30px 0; font-size: 2rem; }
+
+/* Esta linea me ayuda a cambiar cuantos se muestran por fila*/
+.session-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;}
+
+/* Tablet */
+@media (max-width: 992px) { .session-grid { grid-template-columns: repeat(2, 1fr); } }
+/* Celular */
+@media (max-width: 576px) { .session-grid { grid-template-columns: 1fr; } }
+
+.session-card {
+  background: white; border-radius: 16px; overflow: hidden; 
+  box-shadow: 0 4px 20px rgba(0,0,0,.08); transition: .3s;
+}
+
+.session-title { margin: 10px 0; min-height: 50px; }
+
+
+
+
+.session-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,.15); }

@@ -1,7 +1,9 @@
 import { Usuario } from "../types/Usuario";
 
-const user: Usuario = {
+export let user: Usuario[] = [
+  {
     name: "diego",
-    email: "diego@gmail.com",
+    email: "diegoarielmar@gmail.com",
     password: "123456"
-};
+  }
+];
