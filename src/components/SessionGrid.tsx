@@ -1,14 +1,16 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Swal from "sweetalert2";
-import { useState } from "react";
-import { doLogin, doRegister } from "../redux/sessionManager";
+import { useState, useEffect } from "react";
+import { createSession, doRegister } from "../redux/userSlice";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 import "../styles/session-grid.css";
 
 export default function SessionGrid() {
     const dispatch = useAppDispatch();
+    const router = useRouter();
 
     const [name_register, setName] = useState("");
     const [email_register, setEmail_R] = useState("");
@@ -17,26 +19,76 @@ export default function SessionGrid() {
     const [email_login, setEmail_L] = useState("");
     const [password_login, setPassword_L] = useState("");
 
-    const handleRegister = () => {
-    if (!email_register.includes("@") || name_register === "" || 
-        email_register === "" || password_register === "" ) {
+    const users = useAppSelector(
+        state => state.user.users
+    );
 
-            Swal.fire("Error", "Por favor, complete todos los campos o el correo es inválido", "error");
-            return;
-      }else{
-        dispatch(doRegister({ name: name_register, email: email_register, password: password_register }));
-      }
-    };
+    /* Verificar si esta con la sesion iniciada */
+      useEffect(() => {
+      
+          const session = localStorage.getItem("session");
+          if (session) {
+            router.replace("../openStore");
+          } 
+       }, []); 
 
+
+    //Proceso de Login
     const handleLogin = () => {
-    if (!email_login.includes("@") || password_login === "" || email_login === "" ) {
-        Swal.fire("Error", "Por favor, complete todos los campos o el correo es inválido", "error");
-        return;
-      }else{
-        dispatch(doLogin({ email: email_login, password: password_login }));
-      }
+        if(password_login == "" || email_login == ""){
+            Swal.fire("Error", "Campos vacios", "error");
+            return;
+        }
+
+        const user = users.find(
+            u =>
+                u.email === email_login &&
+                u.password === password_login
+        );
+
+        if (!user) {
+            Swal.fire("Error", "Correo o contraseña incorrectos", "error");
+            return;
+        }
+
+        // Se crea la sesion y se guarda en el localStorage
+        dispatch(createSession(user));
+        localStorage.setItem( "session", JSON.stringify(user));
+        Swal.fire("Éxito", `Bienvenido ${user.name}`, "success");
+
     };
 
+    //Proceso de Register
+    const handleRegister = () => {
+
+        if(password_register == "" || email_register == "" || name_register == ""){
+            Swal.fire("Error", "Campos vacios", "error");
+            return;
+        }
+        //Busca repetidos
+        const existingUser = users.find(
+            u => u.email === email_register
+        );
+
+        if (existingUser) {
+                Swal.fire("Error", "Correo ya ingresado", "error");
+            return;
+        }
+
+        const newUser = {
+            name: name_register,
+            email: email_register,
+            password: password_register
+        };
+        //Hace el registro
+        dispatch(doRegister(newUser));
+
+        // Se crea la sesion y se guarda en el localStorage
+        dispatch(createSession(newUser));
+        localStorage.setItem("session",JSON.stringify(newUser));
+
+        Swal.fire("Éxito", `Bienvenido${newUser.name}`, "success");
+    };
 
     return (
         <div className="session-grid">

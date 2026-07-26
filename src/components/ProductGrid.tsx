@@ -3,7 +3,9 @@
 /* Para que funcione next/Image */
 import Image from "next/image";
 
-import { useState } from "react";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import { listProducts } from "../data/listProducts";
 import { addToCart } from "../redux/cartSlice";
 import { useAppDispatch } from "../redux/hooks";
@@ -11,6 +13,18 @@ import { useAppDispatch } from "../redux/hooks";
 import "../styles/product-grid.css";
 
 export default function ProductGrid() {
+
+      const router = useRouter();
+      useEffect(() => {
+      
+          const session = localStorage.getItem("session");
+          if (!session) {
+              Swal.fire("Error", "Por favor, inicie sesion primero", "error");
+            router.replace("../");
+          } 
+      }, []); 
+      
+
   const dispatch = useAppDispatch();
   
   const [selectedCategory, setSelectedCategory] = useState("Todos");

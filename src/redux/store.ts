@@ -1,11 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "./cartSlice";
-import sessionManagerReducer from "./sessionManager";
+import userReducer from "./userSlice";
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
-    session: sessionManagerReducer,
+    user: userReducer,
   },
 });
 
