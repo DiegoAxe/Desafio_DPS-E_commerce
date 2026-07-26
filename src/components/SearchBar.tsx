@@ -1,5 +1,3 @@
-/* REVISAR ESTO */
-
 "use client";
 import "../styles/search.css";
 
