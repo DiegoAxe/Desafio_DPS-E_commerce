@@ -64,6 +64,7 @@ export default function ProductGrid() {
             <div className="product-info">
               <h1 className="product-title">{product.title}</h1>
               <h3 className="product-category">{product.category}</h3>
+              <p>{product.text}</p>
               <p className="product-price">${product.price}</p>
               <button className="add-button" onClick={() => dispatch(addToCart(product))}>
                 Agregar al carrito
