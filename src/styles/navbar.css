@@ -27,7 +27,7 @@
 }
 .cart-button:hover { background: #0284c7; }
 .cart-dropdown {
-  position: absolute; right: 0; top: 55px; width: 460px; max-height: 600px; overflow-y: auto; height: 80vh;
+  position: absolute; right: 0; top: 55px; width: 460px; max-height: 600px; overflow-y: auto; max-height: 80vh;
   background: white; border-radius: 15px; padding: 15px;
   box-shadow: 0 10px 30px rgba(0,0,0,.15); z-index: 999; scrollbar-width:5px; scrollbar-color: white #1e293b;
 }

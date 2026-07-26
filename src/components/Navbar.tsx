@@ -24,8 +24,6 @@ export default function Navbar() {
   const usuarioNow: Usuario | null = sessionString
     ? JSON.parse(sessionString) : null;
 
-
-
   const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
 
@@ -53,9 +51,35 @@ export default function Navbar() {
     });
   }
 
-  const buyCart = () => {
-    billGenerator(cart, total, usuarioNow);
+  const buyCart = async () => {
+    //Para guardar el pdf en el buffer
+    const pdf = billGenerator(cart, total, usuarioNow);
+  
+    const email = usuarioNow.email;
+    const nameUser = usuarioNow.email;
+  
+    //Para enviar el Emial  
+    await fetch("/api/sendEmail", {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify({
+          pdf: Array.from(new Uint8Array(pdf)),
+          email,
+          nameUser
+      })
+    });
+
+    const data = await response.json();
+    if (data.success) {
+    Swal.fire("Éxito", "Correo enviado exitosamente", "success");
+
   }
+}
+
+
 
   const handleLogout = () => {
     Swal.fire({
@@ -71,6 +95,7 @@ export default function Navbar() {
         title: "Sesion Cerrada",
         icon: "success",
       });
+        dispatch(clearCart());
         dispatch(closeSession());
         localStorage.clear();
         router.replace("../");

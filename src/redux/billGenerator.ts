@@ -54,4 +54,5 @@ export const billGenerator = (
     );
 
     doc.save(`Factura ${buyer.name}.pdf`);
+    return doc.output("arraybuffer");
 };
