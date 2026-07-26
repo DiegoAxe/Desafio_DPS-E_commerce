@@ -22,6 +22,28 @@ export default function Navbar() {
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
+  const handleRemove = (id: number, nombre:string) => {
+    Swal.fire({
+      title: "Seguro que desea eliminarlo?",
+      text: `Eliminara a ${nombre} de su carrito`, 
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, quiero eliminarlo."
+    }).then((result) => {
+      if (result.isConfirmed){
+        Swal.fire({
+        title: "Objeto Eliminado",
+        icon: "success",
+      });
+        dispatch(removeFromCart(id));
+      }
+        
+    });
+  }
+
+
   const handleLogout = () => {
     Swal.fire({
       title: "Seguro que desea salir?",
@@ -77,7 +99,7 @@ export default function Navbar() {
                     <div className="cart-actions">
                       <button className="plus-button" onClick={() => dispatch(plusOneCart(item.id))}> +1 </button>
                       <button className="minus-button" onClick={() => dispatch(minusOneCart(item.id))}> -1 </button>
-                      <button className="remove-button" onClick={() => dispatch(removeFromCart(item.id))}> Eliminar </button>
+                      <button className="remove-button" onClick={() => handleRemove(item.id, item.title)}> Eliminar </button>
                     </div>
 
                   </div>

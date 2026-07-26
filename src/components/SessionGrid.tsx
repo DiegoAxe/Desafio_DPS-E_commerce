@@ -87,7 +87,7 @@ export default function SessionGrid() {
         dispatch(createSession(newUser));
         localStorage.setItem("session",JSON.stringify(newUser));
 
-        Swal.fire("Éxito", `Bienvenido${newUser.name}`, "success");
+        Swal.fire("Éxito", `Bienvenido ${newUser.name}`, "success");
         router.replace("../openStore");
 
     };
