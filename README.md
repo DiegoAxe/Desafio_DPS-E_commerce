@@ -1,4 +1,4 @@
-DPs Desafio Practico ECommerce UDB
+DPS Desafio Practico ECommerce UDB
 Diego Ariel Martinez Lemus Ml222767
 
 Enlace a la pagina publicada en Netlify: https://ecommercedps.netlify.app
@@ -18,7 +18,7 @@ $ git clone https://github.com/DiegoAxe/Desafio_DPS-E_commerce.git
 Luego ingrese a la carpeta del proyecto:
 $ cd Desafio_DPS-E_commerce
 
-Insle las dependencias utilizadas del proyecto:
+Instale las dependencias utilizadas del proyecto:
 $ npm install
 
 Y finalmente ejecute el proyecto:
