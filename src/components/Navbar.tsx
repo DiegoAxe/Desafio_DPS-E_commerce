@@ -55,8 +55,8 @@ export default function Navbar() {
     //Para guardar el pdf en el buffer
     const pdf = billGenerator(cart, total, usuarioNow);
   
-    const email = usuarioNow.email;
-    const nameUser = usuarioNow.name;
+    const email = usuarioNow?.email;
+    const nameUser = usuarioNow?.name;
   
     //Para enviar el Emial  
     await fetch("/api/sendEmail", {
@@ -131,7 +131,7 @@ export default function Navbar() {
         <Link href="/">Inicio</Link>
       </div>
       <div className="nav-links">
-        <h1>Usuario: {usuarioNow.name}</h1>
+        <h1>Usuario: {usuarioNow?.name}</h1>
         <button className="logout-button" onClick={handleLogout} > Cerrar Sesion </button>
       </div>
 
