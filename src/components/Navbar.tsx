@@ -56,7 +56,7 @@ export default function Navbar() {
     const pdf = billGenerator(cart, total, usuarioNow);
   
     const email = usuarioNow.email;
-    const nameUser = usuarioNow.email;
+    const nameUser = usuarioNow.name;
   
     //Para enviar el Emial  
     await fetch("/api/sendEmail", {
