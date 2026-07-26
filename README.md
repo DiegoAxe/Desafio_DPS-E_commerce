@@ -3,7 +3,7 @@ Diego Ariel Martinez Lemus Ml222767
 
 Enlace a la pagina publicada en Netlify: https://ecommercedps.netlify.app
 
-Enlace al video: 
+Enlace al video: https://youtu.be/XxxpWU3dZAw
 
 ##### Instrucciones de instalación y despliegue
 
