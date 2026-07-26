@@ -55,7 +55,7 @@ export default function SessionGrid() {
         dispatch(createSession(user));
         localStorage.setItem( "session", JSON.stringify(user));
         Swal.fire("Éxito", `Bienvenido ${user.name}`, "success");
-
+        router.replace("../openStore");
     };
 
     //Proceso de Register
@@ -88,6 +88,8 @@ export default function SessionGrid() {
         localStorage.setItem("session",JSON.stringify(newUser));
 
         Swal.fire("Éxito", `Bienvenido${newUser.name}`, "success");
+        router.replace("../openStore");
+
     };
 
     return (

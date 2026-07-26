@@ -68,3 +68,6 @@
 
 .minus-button { background: #e6ac1a; color: white; border: none; padding: 5px; cursor: pointer; font-weight: bold; transition: .3s;}
 .minus-button:hover { background: #c9940f; }
+
+.logout-button { width: 100%; background: red; color: white; border: none; font-weight: bold;
+  padding: 12px; font-size: 1rem; cursor: pointer; transition: .3s; margin-top: 10px; border-radius: 8px;}

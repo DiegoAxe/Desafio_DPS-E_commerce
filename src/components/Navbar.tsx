@@ -1,6 +1,8 @@
-/* REVISAR ESTO */
-
 "use client";
+
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+import { createSession, closeSession } from "../redux/userSlice";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -12,6 +14,7 @@ import "../styles/navbar.css";
 
 export default function Navbar() {
   const [showCart, setShowCart] = useState(false);
+  const router = useRouter();
 
   const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
@@ -19,11 +22,35 @@ export default function Navbar() {
   const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Seguro que desea salir?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, quiero salir."
+    }).then((result) => {
+      if (result.isConfirmed){
+        Swal.fire({
+        title: "Sesion Cerrada",
+        icon: "success",
+      });
+        dispatch(closeSession());
+        localStorage.clear();
+        router.replace("../");
+      }
+        
+    });
+  }
+
   return (
     <nav className="navbar">
       <div className="nav-links">
         <Link href="/">Inicio</Link>
-        <Link href="/openStore">Login</Link>
+      </div>
+      <div className="nav-links">
+        <button className="logout-button" onClick={handleLogout} > Cerrar Sesion </button>
       </div>
 
       <div className="cart-container">
