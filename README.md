@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+DPS Desafio Practico ECommerce UDB
+Diego Ariel Martinez Lemus Ml222767
 
-## Getting Started
+Enlace a la pagina publicada en Netlify: https://ecommercedps.netlify.app
 
-First, run the development server:
+Enlace al video: 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+##### Instrucciones de instalación y despliegue
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Antes de ejecutar el proyecto, asegúrese de tener instalado:
+- Git
+- Node.js (versión 19 o superior recomendada)
+- npm (incluido con Node.js)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Para clonar el repositorio, abra una terminal, como Git Bash, y ejecute:
+$ git clone https://github.com/DiegoAxe/Desafio_DPS-E_commerce.git
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Luego ingrese a la carpeta del proyecto:
+$ cd Desafio_DPS-E_commerce
 
-## Learn More
+Instale las dependencias utilizadas del proyecto:
+$ npm install
 
-To learn more about Next.js, take a look at the following resources:
+Y finalmente ejecute el proyecto:
+$ npm run dev
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Una vez iniciado, abra el navegador y acceda a:
+http://localhost:3000 (o al puerto que usted tenga elegido)
