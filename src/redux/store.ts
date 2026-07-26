@@ -14,7 +14,7 @@ export const store = configureStore({
     cart: loadCartFromStorage(),
   },
 });
-
+//Para cargar el carrito
 store.subscribe(() => {
   saveCartToStorage(store.getState().cart);
 });

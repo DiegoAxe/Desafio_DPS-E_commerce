@@ -76,14 +76,6 @@ const cartSlice = createSlice({
 
     clearCart: () => [],
 
-    loadCart: (
-      state,
-      action: PayloadAction<Product[]>
-    ) => {
-
-      return action.payload;
-    }
-
   },
 });
 
@@ -94,8 +86,7 @@ export const {
   clearCart,
   plusOneCart,
   minusOneCart,
-  setSelectedCategory,
-  loadCart
+  setSelectedCategory
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

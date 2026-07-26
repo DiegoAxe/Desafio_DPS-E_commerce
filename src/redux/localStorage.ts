@@ -1,3 +1,4 @@
+//Para el carrito
 import { Product } from "../types/Product";
 
 export const loadCartFromStorage = (): Product[] => {

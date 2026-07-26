@@ -1,8 +1,11 @@
 "use client";
 
+import { billGenerator } from "../redux/billGenerator";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import { closeSession } from "../redux/userSlice";
+import { Usuario } from "../types/Usuario";
+
 
 import { useState } from "react";
 import Link from "next/link";
@@ -15,6 +18,13 @@ import "../styles/navbar.css";
 export default function Navbar() {
   const [showCart, setShowCart] = useState(false);
   const router = useRouter();
+  
+  //Para acceder al usuario actual
+  const sessionString = localStorage.getItem("session");
+  const usuarioNow: Usuario | null = sessionString
+    ? JSON.parse(sessionString) : null;
+
+
 
   const cart = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
@@ -44,7 +54,7 @@ export default function Navbar() {
   }
 
   const buyCart = () => {
-    //Aqui tendria que estar el proceso de generar la factura y enviarla al correo, creo
+    billGenerator(cart, total, usuarioNow);
   }
 
   const handleLogout = () => {
@@ -96,6 +106,7 @@ export default function Navbar() {
         <Link href="/">Inicio</Link>
       </div>
       <div className="nav-links">
+        <h1>Usuario: {usuarioNow.name}</h1>
         <button className="logout-button" onClick={handleLogout} > Cerrar Sesion </button>
       </div>
 
