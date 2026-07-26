@@ -27,7 +27,7 @@
 /* Para el filtro */
 .product-filter { margin: 20px 0; display: flex; justify-content: center;
 background-color:#008cba;   color: white;}
-.product-filter h1{ margin-right: 30px;}
+.product-filter h3{ margin-right: 30px;}
 .filter-button { background: #008cba; color: white; font-size: 1rem; font-weight: bold; cursor: pointer; 
 padding: 10px 35px; border: 0px  solid #006f94; transition: .3s; }
 .filter-button:hover { background: #006f94; transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,.15); }

@@ -40,7 +40,7 @@ export default function ProductGrid() {
      <div>
                     {/* Los diferentes botones llamando a la función para filtrar */}
       <div className="product-filter">
-          <h1> Filtro por Categoría:</h1>
+          <h3> Filtro por Categoría:</h3>
           <button className="filter-button" onClick={() => setSelectedCategory("Todos")}>Todos</button>
           <button className="filter-button" onClick={() => setSelectedCategory("Comics")}>Comics</button>
           <button className="filter-button" onClick={() => setSelectedCategory("Peluches")}>Peluches</button>

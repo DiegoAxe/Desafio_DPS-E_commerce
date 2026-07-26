@@ -2,7 +2,7 @@
 
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
-import { createSession, closeSession } from "../redux/userSlice";
+import { closeSession } from "../redux/userSlice";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -43,6 +43,9 @@ export default function Navbar() {
     });
   }
 
+  const buyCart = () => {
+    //Aqui tendria que estar el proceso de generar la factura y enviarla al correo, creo
+  }
 
   const handleLogout = () => {
     Swal.fire({
@@ -61,6 +64,27 @@ export default function Navbar() {
         dispatch(closeSession());
         localStorage.clear();
         router.replace("../");
+      }
+        
+    });
+  }
+
+  const handleClear = () => {
+    Swal.fire({
+      title: "Seguro que desea vaciar el carrito?",
+      text: "Perdera todo lo que tiene en el",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Si, quiero vaciarlo."
+    }).then((result) => {
+      if (result.isConfirmed){
+        Swal.fire({
+        title: "Carrito Vaciado",
+        icon: "success",
+      });
+        dispatch(clearCart());
       }
         
     });
@@ -105,7 +129,8 @@ export default function Navbar() {
                   </div>
                 ))}
                 <div className="cart-total"><strong>Total: ${total}</strong></div>
-                <button className="clear-button" onClick={() => dispatch(clearCart())}>
+                <button className="buy-button" onClick={buyCart}> Comprar carrito </button>
+                <button className="clear-button" onClick={handleClear}>
                   Vaciar carrito
                 </button>
               </>

@@ -45,7 +45,6 @@ const userSlice = createSlice({
         state.userNow = null;
         state.loginSuccess = false;
     }
-
   }
 });
 
